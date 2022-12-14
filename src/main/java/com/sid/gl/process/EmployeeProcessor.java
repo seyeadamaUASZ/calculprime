@@ -32,6 +32,7 @@ public class EmployeeProcessor implements ItemProcessor<Employee,Employee> {
         if(montantTotal<=0){
             throw new MontantException("amount is full empty !!!");
         }
+        System.out.println("amount global "+montantTotal);
 
         return employee;
     }

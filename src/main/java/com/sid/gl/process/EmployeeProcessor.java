@@ -3,9 +3,12 @@ package com.sid.gl.process;
 import com.sid.gl.constants.PrimeConstant;
 import com.sid.gl.exceptions.MontantException;
 import com.sid.gl.models.Employee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 
 public class EmployeeProcessor implements ItemProcessor<Employee,Employee> {
+    private Logger logger = LoggerFactory.getLogger(EmployeeProcessor.class);
 
     @Override
     public Employee process(Employee employee) throws Exception {
@@ -32,7 +35,7 @@ public class EmployeeProcessor implements ItemProcessor<Employee,Employee> {
         if(montantTotal<=0){
             throw new MontantException("amount is full empty !!!");
         }
-        System.out.println("amount global "+montantTotal);
+        logger.info("amount global {}",montantTotal);
 
         return employee;
     }

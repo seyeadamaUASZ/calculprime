@@ -1,5 +1,7 @@
 package com.sid.gl.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "api")
 public class EmployeeController {
+    private Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     @Autowired
     private JobLauncher jobLauncher;
@@ -30,7 +33,7 @@ public class EmployeeController {
         JobExecution jobExecution =
                 jobLauncher.run(job,parameters);
         while(jobExecution.isRunning()){
-            System.out.println(".....execution.......");
+          logger.info("....execution job ....");
 
         }
         return jobExecution.getStatus();

@@ -13,7 +13,7 @@ public class EmployeeItemWriter implements ItemWriter<Employee> {
     @Autowired
     private EmployeeRepository employeeRepository;
     @Override
-    public void write(List<? extends Employee> list) throws Exception {
+    public void write(List<? extends Employee> list) {
          employeeRepository.saveAll(list);
     }
 }
